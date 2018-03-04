@@ -11,13 +11,14 @@ import org.apache.storm.spout.MultiScheme;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.UUID;
 import org.apache.storm.StormSubmitter;
 
 import org.apache.storm.spout.SchemeAsMultiScheme;
 import org.apache.storm.kafka.*;
-        
 
+        
 public class KafkaStormSample {
    public static void main(String[] args) throws Exception{
       Config config = new Config();
@@ -38,7 +39,7 @@ public class KafkaStormSample {
       builder.setSpout("kafka-spout", new KafkaSpout(kafkaSpoutConfig));
       builder.setBolt("word-spitter", new SplitBolt()).shuffleGrouping("kafka-spout");
       builder.setBolt("word-counter", new CountBolt()).shuffleGrouping("word-spitter");
-         
+      builder.setBolt("forwardToKafka", new WriteToKafka()).shuffleGrouping("word-counter");   
       LocalCluster cluster = new LocalCluster();
       cluster.submitTopology("KafkaStormSample", config, builder.createTopology());
 

@@ -16,6 +16,8 @@ import org.apache.storm.task.OutputCollector;
 import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.IRichBolt;
 import org.apache.storm.task.TopologyContext;
+import org.apache.storm.tuple.Fields;
+import org.apache.storm.tuple.Values;
 public class CountBolt implements IRichBolt{
    Map<String, Integer> counters;
    private OutputCollector collector;
@@ -37,7 +39,9 @@ public class CountBolt implements IRichBolt{
          Integer c = counters.get(str) +1;
          counters.put(str, c);
       }
-   
+    String word=str;
+    int count=counters.get(str);
+    collector.emit(new Values(word,count));
       collector.ack(input);
    }
 
@@ -65,7 +69,7 @@ public class CountBolt implements IRichBolt{
 
    @Override
    public void declareOutputFields(OutputFieldsDeclarer declarer) {
-   
+     declarer.declare(new Fields("word","count"));
    }
 
   
