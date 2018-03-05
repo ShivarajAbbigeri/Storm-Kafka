@@ -3,8 +3,8 @@ This is a simple wordcount example of Apache Storm which I am integrating with K
 given by Storm and running it in local machine.
 
 ## Getting Started
-Clone this or download the project. If you have NetBeans installed you can Download zip file and directly 
-import using file->import->import from zip option given by **NetBeans**
+Clone this or download the project. If you have NetBeans installed you can Download zip file and 
+directly import using file->import->import from zip option given by **NetBeans**
 
 
 ### Prerequisites
@@ -16,9 +16,9 @@ import using file->import->import from zip option given by **NetBeans**
 * Kafka
 [Download kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/1.0.0/kafka_2.11-1.0.0.tgz)
 
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
+### Running in your local machine
+* clone this project or download as a zip.
+* open NetBeans and import this project.
 
 Say what the step will be
 
