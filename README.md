@@ -18,14 +18,25 @@ directly import using file->import->import from zip option given by **NetBeans**
 
 ### Running in your local machine
 * clone this project or download as a zip.
-* open NetBeans and import this project.
-
-Say what the step will be
-
+* open NetBeans and import this project (it gives errors don't worry build the project erros will be gone).
+* before running do following steps
+* 1. unzip kafka that you downloaded.
+* 2. go to the kafka folder and open command prompt
+* 3. start zookeeper by typing command this will take some time and print some messages don't worry
 ```
-Give the example
+> bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
-
+* 4. start kafka server by typing command (type this in new command prompt in kafka folder)
+```
+> bin/kafka-server-start.sh config/server.properties
+```
+* 5. create 2 topics named "words" and "wordsoutput"
+```
+> bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic words
+```
+```
+> bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic wordsoutput
+```
 And repeat
 
 ```
